@@ -75,10 +75,13 @@ sub createSignonResponseMessageSetV1 {
 sub createBankAccount {
 	my $parent = shift;
 	my $elementName = shift;
-	my @csvRecords = shift;
+	my $accountId = shift;
+	my $accountType = shift;
 
 	my $element = $parent->addNewChild(NO_NAMESPACE, $elementName);
 	createTextValueElement($element, "BANKID", "INGBNL2A");
+	createTextValueElement($element, "ACCTID", $accountId);
+	createTextValueElement($element, "ACCTTYPE", $accountType);
 }
 
 sub createBankTransactionList {
@@ -87,6 +90,7 @@ sub createBankTransactionList {
 	my @csvRecords = shift;
 
 	my $element = $parent->addNewChild(NO_NAMESPACE, $elementName);
+	# TODO
 }
 
 sub createLedgerBalance {
@@ -95,6 +99,7 @@ sub createLedgerBalance {
 	my @csvRecords = shift;
 
 	my $element = $parent->addNewChild(NO_NAMESPACE, $elementName);
+	# TODO
 }
 
 sub createStatementResponse {
@@ -104,7 +109,7 @@ sub createStatementResponse {
 
 	my $element = $parent->addNewChild(NO_NAMESPACE, $elementName);
 	createTextValueElement($element, "CURDEF", "EUR");
-	createBankAccount($element, "BANKACCTFROM", @csvRecords);
+	createBankAccount($element, "BANKACCTFROM", "TODO", "CHECKING");
 	createBankTransactionList($element, "BANKTRANLIST", @csvRecords);
 	createLedgerBalance($element, "LEDGERBAL", @csvRecords);
 }
