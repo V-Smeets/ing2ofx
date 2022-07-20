@@ -1,0 +1,58 @@
+.TH ING2OFX 1 2022-07-21 ing2ofx "Command Line Reference"
+.SH NAME
+ing2ofx \- convert ING bank statements from CSV format to other formats
+.SH SYNOPSIS
+.B ing2ofx
+.RI [ options ]
+.RI [ file ..]
+.br
+.B ing2mt940
+.RI [ options ]
+.RI [ file ..]
+.SH DESCRIPTION
+.B ing2ofx
+is a command to translate an ING bank statement file from the CSV format to an other format.
+Options can be used to define the required output format.
+The arguments provided as
+.I file
+are the
+.I .csv
+files that will be converted.
+The format of this
+.I file
+is defined by
+.IR ING_CSV_Mijn_ING_Augustus2020_tcm162-201483.pdf .
+.PP
+The default action for
+.B ing2ofx
+is to translate the statement file in to the OFX format and
+.B ing2mt940
+will translate it in to the MT940 format.
+.SH OPTIONS
+.TP
+.B --ofx
+Translate the statement file into the OFX format. The name of the file will be the original
+.I .csv
+filename where the suffix
+.I .csv
+is replaced by
+.IB .ofx .
+This option the the default for the command
+.BR ing2ofx .
+.TP
+.B --mt920
+Translate the statement file into the MT920 format. The name of the file will be the original
+.I .csv
+filename where the suffix
+.I .csv
+is replaced by
+.IB .mt920 .
+This option the the default for the command
+.BR ing2mt920 .
+.SH EXIT STATUS
+.B ing2ofx
+will exit with status 0 in case everything could be converted.
+The exit status will be 1 in case there was an error.
+.SH SEE ALSO
+.UR https://www.ing.nl/media/ING_CSV_Mijn_ING_Augustus2020_tcm162-201483.pdf
+.UE
