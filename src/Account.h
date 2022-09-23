@@ -47,22 +47,38 @@ namespace ing2ofx
 
     class SavingsTransaction: public Transaction
     {
-	int datum;
-	int omschrijving;
-	int rekening;
-	int rekeningNaam;
-	int tegenrekening;
-	int afBij;
-	int bedrag;
-	int valuta;
-	int mutatiesoort;
-	int mededelingen;
-	int saldoNaMutatie;
+        int datum;
+        int omschrijving;
+        int rekening;
+        int rekeningNaam;
+        int tegenrekening;
+        int afBij;
+        int bedrag;
+        int valuta;
+        int mutatiesoort;
+        int mededelingen;
+        int saldoNaMutatie;
     };
 
     class Account
     {
         std::list<Transaction> transactions;
+    };
+
+    class CheckingAccount: public Account
+    {
+    };
+
+    class EuroCheckingAccount: public CheckingAccount
+    {
+    };
+
+    class ForeignCheckingAccount: public CheckingAccount
+    {
+    };
+
+    class SavingsAccount: public Account
+    {
     };
 
 }
